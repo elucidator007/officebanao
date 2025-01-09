@@ -36,7 +36,7 @@ const SlideModal = ({isAddImageOpen, setIsAddImageOpen, currImage, setImages}) =
 
           {/* Right Section - Form */}
           <div className="w-[400px] mt-10">
-            <RightPanel setImages={setImages} currImage={currImage}/>
+            <RightPanel setImages={setImages} currImage={currImage} toggleModal={toggleModal}/>
           </div>
         </div>
       </div>

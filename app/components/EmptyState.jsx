@@ -20,8 +20,7 @@ const EmptyState = ({setCurrImage, setIsAddImageOpen}) => {
     const imageUrl = URL.createObjectURL(file);
   
     setCurrImage(imageUrl);
-    // setImages((prevImages) => [...prevImages, imageUrl]); // Add the image to the images array
-    setIsAddImageOpen(true); // Open the modal
+    setIsAddImageOpen(true);
   };
 
   return (

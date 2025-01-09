@@ -2,6 +2,7 @@
 import EmptyState from "./components/EmptyState";
 import { useState } from "react";
 import SlideModal from "./components/SideModal";
+import ImageGrid from "./components/ImageGrid";
 
 export default function Home() {
     const [images, setImages] = useState([]);
@@ -11,7 +12,10 @@ export default function Home() {
     return (
       <div className="relative w-full h-screen">
         {/* EmptyState should occupy full width */}
-        <EmptyState setCurrImage={setCurrImage} setIsAddImageOpen={setIsAddImageOpen} />
+        {images.length === 0 ? 
+            <EmptyState setCurrImage={setCurrImage} setIsAddImageOpen={setIsAddImageOpen} /> : 
+            <ImageGrid images={images} setCurrImage={setCurrImage} setIsAddImageOpen={setIsAddImageOpen} setImages={setImages}/>
+        }
   
         {/* SlideModal appears on top */}
         {isAddImageOpen && (

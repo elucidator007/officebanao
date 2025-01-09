@@ -9,7 +9,7 @@ const TagButton = ({ text }) => (
   </button>
 );
 
-const RightPanel = () => {
+const RightPanel = ({setImages, currImage, toggleModal}) => {
   const [title, setTitle] = useState('Asset 001');
   const [description, setDescription] = useState('');
 
@@ -17,8 +17,11 @@ const RightPanel = () => {
     const formData = {
       title,
       description,
+      url : currImage
     };
 
+    setImages(prev => [...prev, formData])
+    toggleModal()
     console.log('Form Data:', formData);
   };
 
