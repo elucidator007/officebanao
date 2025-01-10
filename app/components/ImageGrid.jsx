@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Plus } from "lucide-react";
+import MasonaryGrid from "./masonaryGrid";
 
 const ImageGrid = ({ images, setCurrImage, setIsAddImageOpen, setImages }) => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -78,7 +79,7 @@ const ImageGrid = ({ images, setCurrImage, setIsAddImageOpen, setImages }) => {
         </div>
         </div>
         <button 
-        className="flex items-center gap-2 bg-blue-900 hover:bg-blue-800 text-white px-4 py-2 rounded-md cursor-pointer transition-colors"
+        className="flex items-center gap-2 bg-[#304559] hover:bg-[#41576e] text-white px-4 py-2 rounded-md cursor-pointer transition-colors"
         onClick={() => document.querySelector('input[type="file"]').click()}
         >
         <Plus className="w-5 h-5" />
@@ -91,23 +92,7 @@ const ImageGrid = ({ images, setCurrImage, setIsAddImageOpen, setImages }) => {
         />
         </button>
     </div>
-
-      {/* Masonry Grid */}
-      <div className="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-6">
-      {images.map((item, index) => (
-        <div
-          key={index}
-          className="break-inside-avoid mb-6 rounded-lg overflow-hidden shadow-md bg-white"
-        >
-          <img
-            src={item.url}
-            alt={item.title || `Image ${index}`}
-            className="w-full h-auto object-contain"
-            loading="lazy"
-          />
-        </div>
-      ))}
-    </div>
+    <MasonaryGrid images={images}/>
     </div>
   );
 };

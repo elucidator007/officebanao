@@ -17,7 +17,8 @@ const RightPanel = ({setImages, currImage, toggleModal}) => {
     const formData = {
       title,
       description,
-      url : currImage
+      url : currImage,
+      date: Date.now()
     };
 
     setImages(prev => [...prev, formData])

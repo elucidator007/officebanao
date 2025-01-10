@@ -35,7 +35,7 @@ const EmptyState = ({setCurrImage, setIsAddImageOpen}) => {
       <div className='text-gray-500 text-sm'>Add Assets here</div>
       <button 
         onClick={handleClick}
-        className='flex gap-2 bg-[#2B4055] text-white px-4 py-2 rounded-md'
+        className='flex gap-2 bg-[#304559] hover:bg-[#41576e] text-white px-4 py-2 rounded-md'
       >
         <Plus />
         <span>Add</span>

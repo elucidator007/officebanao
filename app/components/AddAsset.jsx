@@ -76,21 +76,24 @@ const AddAsset = ({ imageUrl }) => {
           onMouseLeave={handleMouseUp}
         >
           <div className="relative w-full h-full rounded-lg">
-            <Image 
-              src={imageUrl || "/api/placeholder/1200/800"}
-              alt="Image to edit"
-              fill
-              unoptimized
-              className="object-cover rounded-lg"
-              priority
-              style={{
-                transform: `
-                  rotate(${rotation}deg)
-                  scaleX(${flipH ? -1 : 1})
-                  scaleY(${flipV ? -1 : 1})
-                `
-              }}
-            />
+            <div className="relative w-full">
+                <Image 
+                    src={imageUrl || "/api/placeholder/1200/800"}
+                    alt="Image to edit"
+                    width={1200}
+                    height={800}
+                    unoptimized
+                    className="rounded-lg max-h-[80vh] max-w-full h-auto w-auto mx-auto"
+                    priority
+                    style={{
+                    transform: `
+                        rotate(${rotation}deg)
+                        scaleX(${flipH ? -1 : 1})
+                        scaleY(${flipV ? -1 : 1})
+                    `
+                    }}
+                />
+            </div>
             {isCropping && cropCoords.width > 0 && (
               <div className="absolute inset-0 bg-black/50">
                 <div 
