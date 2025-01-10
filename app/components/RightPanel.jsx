@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Tag, ChevronDown, Upload } from 'lucide-react';
+import { PREVIEW_IMAGES } from '../utils/utility';
 
 const TagButton = ({ text }) => (
   <button className="flex items-center gap-2 px-4 py-2 text-[#666666] border border-[#E5E7EB] rounded-lg bg-white text-xs">
@@ -22,7 +23,15 @@ const RightPanel = ({setImages, currImage, toggleModal}) => {
       name: 'Anonymous'
     };
 
-    setImages(prev => [...prev, formData])
+    setImages(prev => {
+        if(prev.length < 4){
+            console.log('heyy1', [...prev, ...PREVIEW_IMAGES, formData])
+          return [...prev, ...PREVIEW_IMAGES, formData]
+        } else {
+            console.log('heyy2', [...prev, formData])
+          return [...prev, formData]
+        }   
+      })
     toggleModal()
     console.log('Form Data:', formData);
   };

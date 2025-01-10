@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Heart, MoreVertical } from 'lucide-react';
-import { PREVIEW_IMAGES } from '../utils/utility';
 
 const MasonryGrid = ({images}) => {
   const [showMenu, setShowMenu] = useState(null);

@@ -1,41 +1,44 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Plus } from "lucide-react";
 import MasonaryGrid from "./MasonaryGrid";
 
 const ImageGrid = ({ images: originalImages, setCurrImage, setIsAddImageOpen, setImages }) => {
-  const [searchTerm, setSearchTerm] = useState("");
+    const [searchTerm, setSearchTerm] = useState("");
   const [sortOption, setSortOption] = useState("Oldest First");
   const [filteredImages, setFilteredImages] = useState(originalImages);
 
-  // Handle filtering
+  useEffect(() => {
+    let newFiltered = [...originalImages];
+    
+    // Apply existing search filter
+    if (searchTerm) {
+      newFiltered = newFiltered.filter((image) =>
+        image.title.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+    }
+    
+    // Apply existing sort
+    if (sortOption === "Newest First") {
+      newFiltered.sort((a, b) => new Date(b.date) - new Date(a.date));
+    } else if (sortOption === "Oldest First") {
+      newFiltered.sort((a, b) => new Date(a.date) - new Date(b.date));
+    } else if (sortOption === "A-Z") {
+      newFiltered.sort((a, b) => a.title.localeCompare(b.title));
+    }
+    
+    setFilteredImages(newFiltered);
+  }, [originalImages, searchTerm, sortOption]);
+
   const handleSearch = (event) => {
     const value = event.target.value.toLowerCase();
     setSearchTerm(value);
-
-    const filtered = originalImages.filter((image) =>
-      image.title.toLowerCase().includes(value)
-    );
-    setFilteredImages(filtered);
   };
 
-  // Handle sorting
   const handleSort = (event) => {
     const option = event.target.value;
     setSortOption(option);
-
-    let sorted = [...filteredImages];
-    if (option === "Newest First") {
-      sorted = sorted.sort((a, b) => new Date(b.date) - new Date(a.date));
-    } else if (option === "Oldest First") {
-      sorted = sorted.sort((a, b) => new Date(a.date) - new Date(b.date));
-    } else if (option === "A-Z") {
-      sorted = sorted.sort((a, b) => a.title.localeCompare(b.title));
-    }
-
-    setFilteredImages(sorted);
   };
 
-  // Handle adding an image
   const handleImageUpload = (event) => {
     const file = event.target.files[0];
     if (file && !file.type.startsWith('image/')) {

@@ -6,7 +6,7 @@ import ImageGrid from "./components/ImageGrid";
 import { PREVIEW_IMAGES } from "./utils/utility";
 
 export default function Home() {
-    const [images, setImages] = useState(PREVIEW_IMAGES);
+    const [images, setImages] = useState([]);
     const [currImage, setCurrImage] = useState(null);
     const [isAddImageOpen, setIsAddImageOpen] = useState(false);
     console.log('images', images);
