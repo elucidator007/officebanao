@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, Crop, RotateCcw, FlipHorizontal, FlipVertical, RefreshCcw } from 'lucide-react';
+import { X, Crop, RotateCcw, FlipHorizontal, FlipVertical, RefreshCcw, Pencil } from 'lucide-react';
 import Image from 'next/image';
 
 const AddAsset = ({ imageUrl }) => {
@@ -9,6 +9,7 @@ const AddAsset = ({ imageUrl }) => {
   const [isCropping, setIsCropping] = useState(false);
   const [cropCoords, setCropCoords] = useState({ x: 0, y: 0, width: 0, height: 0 });
   const [dragStart, setDragStart] = useState(null);
+    const [isEditOn, setIsEditOn] = useState(false)
 
   const handleRotate = () => {
     setRotation((prev) => (prev + 90) % 360);
@@ -126,43 +127,51 @@ const AddAsset = ({ imageUrl }) => {
             )}
           </div>
           
-          <div className="absolute right-4 top-4 flex flex-col gap-2 z-10">
-            <button className="p-2 bg-gray-800/50 rounded hover:bg-gray-800/70 transition-colors">
+          {isEditOn ? <div className="absolute right-4 top-4 flex flex-col gap-2 z-10 bg-gray-800/50">
+            <button className="p-2 rounded transition-colors" onClick={() => {setIsEditOn(!isEditOn)}} >
               <X className="text-white w-5 h-5" />
             </button>
             <button 
               className={`p-2 rounded transition-colors ${
-                isCropping ? 'bg-blue-500 hover:bg-blue-600' : 'bg-gray-800/50 hover:bg-gray-800/70'
+                isCropping ? 'bg-blue-500 hover:bg-blue-600' : 'hover:bg-gray-800/70'
               }`}
               onClick={handleCropStart}
             >
               <Crop className="text-white w-5 h-5" />
             </button>
             <button 
-              className="p-2 bg-gray-800/50 rounded hover:bg-gray-800/70 transition-colors"
+              className="p-2 rounded hover:bg-gray-800/70 transition-colors"
               onClick={handleRotate}
             >
               <RotateCcw className="text-white w-5 h-5" />
             </button>
             <button 
-              className="p-2 bg-gray-800/50 rounded hover:bg-gray-800/70 transition-colors"
+              className="p-2 rounded hover:bg-gray-800/70 transition-colors"
               onClick={handleFlipH}
             >
               <FlipHorizontal className="text-white w-5 h-5" />
             </button>
             <button 
-              className="p-2 bg-gray-800/50 rounded hover:bg-gray-800/70 transition-colors"
+              className="p-2 rounded hover:bg-gray-800/70 transition-colors"
               onClick={handleFlipVertical}
             >
               <FlipVertical className="text-white w-5 h-5" />
             </button>
             <button 
-              className="p-2 bg-gray-800/50 rounded hover:bg-gray-800/70 transition-colors"
+              className="p-2 rounded hover:bg-gray-800/70 transition-colors"
               onClick={handleReset}
             >
               <RefreshCcw className="text-white w-5 h-5" />
             </button>
-          </div>
+          </div> : <div className="absolute right-4 top-4 flex flex-col gap-2 z-10">
+          <button 
+              className="p-2 bg-gray-800/50 rounded hover:bg-gray-800/70 transition-colors"
+              onClick={() => {setIsEditOn(!isEditOn)}}
+            >
+              <Pencil className="text-white w-5 h-5" />
+            </button>
+            </div>
+            }
         </div>
       </div>
     </div>

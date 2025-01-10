@@ -3,7 +3,7 @@ import { X } from 'lucide-react';
 import AddAsset from './AddAsset';
 import RightPanel from './RightPanel';
 
-const SlideModal = ({isAddImageOpen, setIsAddImageOpen, currImage, setImages}) => {
+const SlideModal = ({isAddImageOpen, setIsAddImageOpen, currImage, setImages, setCurrImage}) => {
   const toggleModal = () => {
     setIsAddImageOpen(!isAddImageOpen);
   };
@@ -31,7 +31,7 @@ const SlideModal = ({isAddImageOpen, setIsAddImageOpen, currImage, setImages}) =
         <div className="flex h-full">
           {/* Left Section - Image Preview */}
           <div className="flex-1 bg-white">
-            <AddAsset imageUrl={currImage} />
+            <AddAsset imageUrl={currImage} setCurrImage={setCurrImage}/>
           </div>
 
           {/* Right Section - Form */}

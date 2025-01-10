@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Plus } from "lucide-react";
-import MasonaryGrid from "./masonaryGrid";
+import MasonaryGrid from "./MasonaryGrid";
 
 const ImageGrid = ({ images, setCurrImage, setIsAddImageOpen, setImages }) => {
   const [searchTerm, setSearchTerm] = useState("");

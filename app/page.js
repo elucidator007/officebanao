@@ -11,13 +11,13 @@ export default function Home() {
   
     return (
       <div className="relative w-full h-screen">
-        {/* EmptyState should occupy full width */}
+        {/* EmptyState */}
         {images.length === 0 ? 
             <EmptyState setCurrImage={setCurrImage} setIsAddImageOpen={setIsAddImageOpen} /> : 
             <ImageGrid images={images} setCurrImage={setCurrImage} setIsAddImageOpen={setIsAddImageOpen} setImages={setImages}/>
         }
   
-        {/* SlideModal appears on top */}
+        {/* SlideModal */}
         {isAddImageOpen && (
           <div className="absolute top-0 right-0 w-full h-full z-50">
             <SlideModal 
@@ -25,6 +25,7 @@ export default function Home() {
                 setIsAddImageOpen={setIsAddImageOpen} 
                 currImage={currImage}
                 setImages={setImages}    
+                setCurrImage={setCurrImage}
             />
           </div>
         )}
