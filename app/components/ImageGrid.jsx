@@ -96,7 +96,7 @@ const ImageGrid = ({ images: originalImages, setCurrImage, setIsAddImageOpen, se
           />
         </button>
       </div>
-      <MasonaryGrid images={filteredImages}/>
+      <MasonryGrid images={filteredImages}/>
     </div>
   );
 };
