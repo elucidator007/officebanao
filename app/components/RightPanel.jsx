@@ -25,15 +25,12 @@ const RightPanel = ({setImages, currImage, toggleModal}) => {
 
     setImages(prev => {
         if(prev.length < 4){
-            console.log('heyy1', [...prev, ...PREVIEW_IMAGES, formData])
           return [...prev, ...PREVIEW_IMAGES, formData]
         } else {
-            console.log('heyy2', [...prev, formData])
           return [...prev, formData]
         }   
       })
     toggleModal()
-    console.log('Form Data:', formData);
   };
 
   return (

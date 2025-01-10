@@ -6,6 +6,7 @@ const MasonryGrid = ({images}) => {
   const [likedImages, setLikedImages] = useState(new Set());
   
   const handleMenuToggle = (index, e) => {
+    console.log('clicked')
     e.preventDefault();
     e.stopPropagation();
     setShowMenu(showMenu === index ? null : index);

@@ -9,7 +9,6 @@ export default function Home() {
     const [images, setImages] = useState([]);
     const [currImage, setCurrImage] = useState(null);
     const [isAddImageOpen, setIsAddImageOpen] = useState(false);
-    console.log('images', images);
     return (
       <div className="relative w-full h-screen">
         {/* EmptyState */}
