@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Heart, MoreVertical } from 'lucide-react';
 
-const MasonryGrid = ({images}) => {
+const MasonaryGrid = ({images}) => {
   const [showMenu, setShowMenu] = useState(null);
   const [likedImages, setLikedImages] = useState(new Set());
   
@@ -106,4 +106,4 @@ const MasonryGrid = ({images}) => {
   );
 };
 
-export default MasonryGrid;
+export default MasonaryGrid;
