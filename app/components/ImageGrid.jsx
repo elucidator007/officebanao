@@ -4,7 +4,7 @@ import MasonaryGrid from "./MasonaryGrid";
 
 const ImageGrid = ({ images, setCurrImage, setIsAddImageOpen, setImages }) => {
   const [searchTerm, setSearchTerm] = useState("");
-  const [sortOption, setSortOption] = useState("Newest First");
+  const [sortOption, setSortOption] = useState("Oldest First");
 
   // Handle filtering
   const handleSearch = (event) => {

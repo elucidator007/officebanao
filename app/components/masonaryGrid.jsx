@@ -36,11 +36,9 @@ const MasonryGrid = ({images}) => {
     return () => document.removeEventListener('click', handleClickOutside);
   }, []);
 
-  const currImageGrid = [...PREVIEW_IMAGES, ...images];
-
   return (
     <div className="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-6 p-6">
-      {currImageGrid.map((item, index) => (
+      {images.map((item, index) => (
         <div
           key={index}
           className="break-inside-avoid mb-6 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 bg-white relative group"
